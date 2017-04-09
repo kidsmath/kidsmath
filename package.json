@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "expr-eval": "^1.0.0",
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
   },
