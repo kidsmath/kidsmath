@@ -1,0 +1,18 @@
+.question {
+    font-size: xx-large;
+}
+
+.question input {
+    font-size: xx-large;
+    margin-left: 12px;
+    margin-right: 12px;
+    width: 3em;
+}
+
+.lhs {
+    width: 2em;
+}
+
+.rhs {
+    width: 2em;
+}
