@@ -16,5 +16,11 @@ We suggest that you begin by typing:
   cd kidsmath-react
   yarn start
 
+Deploy to github gh-pages branch:
+
+    yarn run deploy
+
+Then visit https://kidsmath.github.io/kidsmath
+
 Happy hacking!
 
