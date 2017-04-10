@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import QuestionList from './QuestionList';
-import QuestionGenerator from './QuestionGenerator';
-
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
+import Home from './Home';
+import Arithmetic from './Arithmetic';
 
 class App extends Component {
     render() {
-        const questions = new QuestionGenerator().generate(20);
         return (
-            <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-
-                    <h2>Kids Math</h2>
-
-                </div>
+            <Router>
                 <div>
-                    <form><QuestionList questions={questions}/></form>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/arithmetic" component={Arithmetic}/>
                 </div>
-            </div>
+            </Router>
         );
     }
 }
