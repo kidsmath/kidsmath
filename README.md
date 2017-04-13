@@ -19,9 +19,14 @@ We suggest that you begin by typing:
 
     yarn start
 
-Deploy to github gh-pages branch:
+Deploy to github gh-pages branch (obsoleted):
 
     yarn run deploy
 
-Then visit https://kidsmath.github.io/kidsmath
+
+Deploy to kidsmath.github.io master branch:
+
+    ./deploy.sh
+
+Then visit https://kidsmath.github.io
 
