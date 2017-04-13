@@ -2,7 +2,7 @@
   "name": "kidsmath",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://kidsmath.github.io/kidsmath",
+  "homepage": ".",
   "dependencies": {
     "expr-eval": "^1.0.0",
     "react": "^15.5.3",
