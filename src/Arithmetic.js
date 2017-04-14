@@ -6,7 +6,7 @@ import logo from './logo.svg';
 
 class Arithmetic extends React.Component {
     render() {
-        const questions = new QuestionGenerator().generate(20);
+        const questions = new QuestionGenerator().generate(20, ['+', '-'], 5, 30);
         return (
             <div className="App">
                 <div className="App-header">
