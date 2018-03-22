@@ -34,7 +34,12 @@ export default class QuestionGenerator {
 
             const expr = lhs + op + rhs;
             const result = Parser.evaluate(expr);
-            console.log('expr: ' + expr + ' = ' + result);
+            // console.log('expr: ' + expr + ' = ' + result);
+
+            if (result == 0) {
+                // skip simple question. e.g. 3 - 3 = 0
+                continue;
+            }
 
             questions.push({
                 lhs,
