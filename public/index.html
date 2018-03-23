@@ -21,5 +21,12 @@
 </head>
 <body>
 <div id="root"></div>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  } else {
+    console.log('service work is not supported by current browser');
+  }
+</script>
 </body>
 </html>

@@ -12,11 +12,12 @@
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "sw-precache": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && sw-precache --root='build/' --static-file-globs='build/**/!(*.map)'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

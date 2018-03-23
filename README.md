@@ -30,3 +30,8 @@ Deploy to kidsmath.github.io master branch:
 
 Then visit https://kidsmath.github.io
 
+
+## References
+
+* https://www.phpied.com/create-react-app-sw-precache-pwa/
+
