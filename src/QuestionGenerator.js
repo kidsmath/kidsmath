@@ -36,7 +36,7 @@ export default class QuestionGenerator {
             const result = Parser.evaluate(expr);
             // console.log('expr: ' + expr + ' = ' + result);
 
-            if (result == 0) {
+            if (result === 0) {
                 // skip simple question. e.g. 3 - 3 = 0
                 continue;
             }
