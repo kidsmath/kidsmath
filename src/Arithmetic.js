@@ -9,7 +9,7 @@ class Arithmetic extends React.Component {
     // let questions = [];
     let questions = [];
     let generator = new QuestionGenerator();
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
       questions = questions.concat(generator.generate(1, ['+', '-'], 10, 90));
       questions = questions.concat(generator.generate(1, ['*', '/'], 2, 9));
     }
