@@ -21,14 +21,14 @@ export default class Question extends React.Component {
 
                     if (event.target.value === this.props.result.toString()) {
                         this.setState({
-                            sign: this.correctSign
+                            sign: this.state.sign + this.correctSign
                         });
 
                         this.focusToNextInput(event);
 
                     } else {
                         this.setState({
-                            sign: this.wrongSign
+                            sign: this.state.sign + this.wrongSign
                         });
                     }
                 } else {
@@ -64,4 +64,3 @@ export default class Question extends React.Component {
             </p>);
     }
 }
-
