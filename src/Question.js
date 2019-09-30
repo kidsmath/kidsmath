@@ -1,5 +1,5 @@
 import React from 'react';
-import './Question.css'
+import './Question.css';
 
 
 export default class Question extends React.Component {
@@ -40,7 +40,7 @@ export default class Question extends React.Component {
       } else {
         console.log('Enter: ' + event.target.value);
       }
-    }
+    };
   }
 
   focusToNextInput(event) {
@@ -56,14 +56,15 @@ export default class Question extends React.Component {
   }
 
   render() {
-    return ( <
-      p className = "question" >
-      <
-      span className = "lhs" > { this.props.lhs } < /span> <span>{this.props.op}</span > < span className = "rhs" > { this.props.rhs } < /span> = <
-      input type = "number"
-      onKeyPress = { this.handleKeyPress }
-      /> <
-      span > { this.state.sign } < /span> < /
-      p > );
+    return (
+      <p className = "question" >
+        <span className = "lhs" > { this.props.lhs } </span>
+        <span>{this.props.op}</span >
+        <span className = "rhs" > { this.props.rhs } </span>
+        =
+        <input type = "number" onKeyPress = { this.handleKeyPress } />
+        <span > { this.state.sign } </span>
+      </p>
+    );
   }
 }

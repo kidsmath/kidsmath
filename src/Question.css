@@ -7,6 +7,12 @@
     margin-left: 12px;
     margin-right: 12px;
     width: 3em;
+
+    /* Only show bottom border */
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
 }
 
 .lhs {
@@ -15,4 +21,16 @@
 
 .rhs {
     width: 2em;
+}
+
+/* Hide number input's spin box */
+/* https://stackoverflow.com/questions/3790935 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }
