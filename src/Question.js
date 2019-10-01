@@ -62,7 +62,7 @@ export default class Question extends React.Component {
         <span>{this.props.op}</span >
         <span className = "rhs" > { this.props.rhs } </span>
         =
-        <input type = "number" onKeyPress = { this.handleKeyPress } />
+        <input type = "number" pattern="[0-9]*" inputmode="numeric" onKeyPress = { this.handleKeyPress } />
         <span > { this.state.sign } </span>
       </p>
     );
