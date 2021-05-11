@@ -5,13 +5,13 @@
   "homepage": ".",
   "dependencies": {
     "expr-eval": "^2.0.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-router": "^5.1.1",
-    "react-router-dom": "^5.1.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^2.2.0",
     "react-scripts": "3.1.2",
     "sw-precache": "^5.2.1"
   },
