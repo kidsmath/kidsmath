@@ -3,6 +3,10 @@
 REV=$(git rev-parse --short HEAD)
 DEPLOY_REPO=kidsmath.github.io
 
+if [ ! -d $DEPLOY_REPO ]; then
+  git clone git@github.com:kidsmath/$DEPLOY_REPO.git
+fi
+
 rm -fr build
 yarn run build
 
