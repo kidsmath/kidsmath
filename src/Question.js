@@ -1,15 +1,44 @@
 import React from 'react';
 import './Question.css';
 
-
 export default class Question extends React.Component {
   constructor() {
     super();
     //this.correctSign = '★';
     this.correctSign = '⭐';
     this.wrongSign = '😢';
+    this.previousAnswer = null;
     this.state = {
       sign: ''
+    };
+
+    // The events onKeyUp or onKeyPress won't be called when 'Tab' is pressed
+    // because it triggers a onBlur before, you need to catch it with onKeyDown.
+    this.handleKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        if (event.target.value) {
+          if (event.target.value == this.previousAnswer) {
+            event.preventDefault();
+            return;
+          }
+          if (event.target.value === this.props.result.toString()) {
+            this.setState({
+              sign: this.state.sign + this.correctSign
+            });
+          } else {
+            this.setState({
+              sign: this.state.sign + this.wrongSign
+            });
+            event.preventDefault();
+          }
+          this.previousAnswer = event.target.value;
+        } else {
+          // empty, clear sign
+          this.setState({
+            sign: ''
+          });
+        }
+      }
     };
 
     this.handleKeyPress = (event) => {
@@ -18,23 +47,25 @@ export default class Question extends React.Component {
         event.preventDefault();
 
         if (event.target.value) {
-
+          if (event.target.value == this.previousAnswer) {
+            event.preventDefault();
+            return;
+          }
           if (event.target.value === this.props.result.toString()) {
             this.setState({
               sign: this.state.sign + this.correctSign
             });
-
             this.focusToNextInput(event);
-
           } else {
             this.setState({
               sign: this.state.sign + this.wrongSign
             });
           }
+          this.previousAnswer = event.target.value;
         } else {
           // empty, clear sign
           this.setState({
-            sign: null
+            sign: ''
           });
         }
       } else {
@@ -62,7 +93,7 @@ export default class Question extends React.Component {
         <span>{this.props.op}</span >
         <span className = "rhs" > { this.props.rhs } </span>
         =
-        <input type = "number" pattern="[0-9]*" inputMode="numeric" onKeyPress = { this.handleKeyPress } />
+        <input type = "number" pattern="[0-9]*" inputMode="numeric" onKeyDown={ this.handleKeyDown } onKeyPress={ this.handleKeyPress } />
         <span > { this.state.sign } </span>
       </p>
     );
