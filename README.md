@@ -1,30 +1,32 @@
-Starts the development server.
+# Kidsmath
+
+## Requirements
+
+Nodejs:
+
+- 14.x
+- 16.x
+- 17.x
+
+see [package.json](package.json) for dependences
+
+## Get Started
+
+Starts the development server:
 
     yarn start
 
-Bundles the app into static files for production.
+Bundles the app into static files for production:
 
     yarn run build
 
-Starts the test runner.
+Starts the test runner:
 
     yarn test
 
-Removes this tool and copies build dependencies, configuration files
-and scripts into the app directory. If you do this, you can’t go back!
+## Deploy
 
-    yarn run eject
-
-We suggest that you begin by typing:
-
-    yarn start
-
-Deploy to github gh-pages branch (obsoleted):
-
-    yarn run deploy
-
-
-Deploy to kidsmath.github.io master branch:
+Deploy to [github pages](kidsmath.github.io) master branch:
 
     ./deploy.sh
 
