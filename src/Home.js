@@ -9,11 +9,11 @@ class Home extends React.Component {
                 <section className="page-header">
                     <h1 className="project-name">Kids Math</h1>
 
-                    <h2 className="project-tagline">Kids math exercies.</h2>
-                    <Link className="btn" to="/arithmetic">Addition in 20</Link>
-                    <Link className="btn" to="/arithmetic">Substraction in 20</Link>
-                    <Link className="btn" to="/arithmetic">Add/Sub in 20</Link>
-                    <Link className="btn" to="/arithmetic">Arithmetic</Link>
+                    <h2 className="project-tagline">Kids math exercise.</h2>
+                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22]">Addition in 20</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22-%22]">Subtraction in 20</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22,%22-%22]">Add/Sub in 20</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22,%22-%22]">Arithmetic</Link>
                 </section>
                 <section className="main-content">
                     <h1>Introduction</h1>
