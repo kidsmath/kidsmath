@@ -16,15 +16,19 @@ export default class Question extends React.Component {
     // because it triggers a onBlur before, you need to catch it with onKeyDown.
     this.handleKeyDown = (event) => {
       if (event.key === 'Tab') {
+        // console.log('Tab');
         if (event.target.value) {
           if (event.target.value == this.previousAnswer) {
-            event.preventDefault();
+            if (event.target.value != this.props.result.toString()) {
+              event.preventDefault();
+            }
             return;
           }
           if (event.target.value === this.props.result.toString()) {
             this.setState({
               sign: this.state.sign + this.correctSign
             });
+            this.props.onAnswerCorrect(this);
           } else {
             this.setState({
               sign: this.state.sign + this.wrongSign
@@ -48,7 +52,11 @@ export default class Question extends React.Component {
 
         if (event.target.value) {
           if (event.target.value == this.previousAnswer) {
-            event.preventDefault();
+            if (event.target.value != this.props.result.toString()) {
+              event.preventDefault();
+            } else {
+              this.focusToNextInput(event);
+            }
             return;
           }
           if (event.target.value === this.props.result.toString()) {
@@ -56,6 +64,7 @@ export default class Question extends React.Component {
               sign: this.state.sign + this.correctSign
             });
             this.focusToNextInput(event);
+            this.props.onAnswerCorrect(this);
           } else {
             this.setState({
               sign: this.state.sign + this.wrongSign
@@ -69,7 +78,7 @@ export default class Question extends React.Component {
           });
         }
       } else {
-        console.log('Enter: ' + event.target.value);
+        // console.log('Enter: ' + event.target.value);
       }
     };
   }
