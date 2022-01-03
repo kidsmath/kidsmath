@@ -47,8 +47,11 @@ function Arithmetic() {
 
   let initQuestions = [];
   let generator = new QuestionGenerator();
-  for (let i = 0; i < 20; i++) {
-    initQuestions = initQuestions.concat(generator.generate(1, ops, 10, 20));
+  const questionsCount = 20;
+  const min = 10;
+  const max = 20;
+  for (let i = 0; i < questionsCount; i++) {
+    initQuestions = initQuestions.concat(generator.generate(1, ops, min, max));
     // questions = questions.concat(generator.generate(1, ['*', '/'], 2, 9));
   }
   const [questions] = useState(initQuestions);
@@ -59,9 +62,9 @@ function Arithmetic() {
     <div className="App-header">
       {/* <h2>Kids Math</h2> */}
       <h2>Level: <span className="level">{level}</span></h2>
-      <div className="score">{correctCount} / {questions.length}</div>
+      <div>{correctCount} / {questions.length}</div>
     </div>
-    <div>
+    <div className="questions">
       <form ><QuestionList questions = { questions } onAnswerCorrect={ onAnswerCorrect.bind(this) } /></form >
     </div>
   </div>);
