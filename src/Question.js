@@ -73,9 +73,9 @@ export default class Question extends React.Component {
           this.previousAnswer = event.target.value;
         } else {
           // empty, clear sign
-          this.setState({
-            sign: ''
-          });
+          // this.setState({
+          //  sign: ''
+          // });
         }
       } else {
         // console.log('Enter: ' + event.target.value);
