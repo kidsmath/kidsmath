@@ -48,8 +48,8 @@ function Arithmetic() {
   let initQuestions = [];
   let generator = new QuestionGenerator();
   const questionsCount = 20;
-  const min = 10;
-  const max = 20;
+  const min = parseInt(query.get('min')? query.get('min') : '1') ;
+  const max = parseInt(query.get('max')? query.get('max') : '20') ;
   for (let i = 0; i < questionsCount; i++) {
     initQuestions = initQuestions.concat(generator.generate(1, ops, min, max));
     // questions = questions.concat(generator.generate(1, ['*', '/'], 2, 9));
