@@ -6,7 +6,7 @@ export default class Question extends React.Component {
     super();
     //this.correctSign = '★';
     this.correctSign = '⭐';
-    this.wrongSign = '😢';
+    this.wrongSign = '🦄';
     this.previousAnswer = null;
     this.state = {
       sign: ''
