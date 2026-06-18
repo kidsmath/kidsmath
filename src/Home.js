@@ -10,10 +10,10 @@ class Home extends React.Component {
                     <h1 className="project-name">Kids Math</h1>
 
                     <h2 className="project-tagline">Kids math exercise.</h2>
-                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22]">Addition in 20</Link>
-                    <Link className="btn" to="/arithmetic?ops=[%22-%22]">Subtraction in 20</Link>
-                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22,%22-%22]">Add/Sub in 20</Link>
-                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22,%22-%22]">Arithmetic</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22]&category=%22add_in_20%22">Addition in 20</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22-%22]&category=%22sub_in_20%22">Subtraction in 20</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22%2B%22,%22-%22]&category=%22add_sub_in_20%22">Add/Sub in 20</Link>
+                    <Link className="btn" to="/arithmetic?ops=[%22%2A%22]&max=12&category=%22multiple_in_12%22">Multiplication under 12</Link>
                 </section>
                 <section className="main-content">
                     <h1>Introduction</h1>

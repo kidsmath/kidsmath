@@ -16,17 +16,20 @@ function useQuery() {
 }
 
 function Arithmetic() {
-
-  let initLevel = localStorage.getItem('level');
-  if (!initLevel) {
-    initLevel = 1;
-  }
   const query = useQuery();
-
   let ops = JSON.parse(query.get('ops'));
   if (!ops) {
     ops = ['+', '-'];
   }
+  let category = JSON.parse(query.get('category'));
+  const storageKey = `${category}_level`
+
+  let initLevel = parseInt(localStorage.getItem(storageKey));
+  if (!initLevel) {
+    initLevel = 1;
+  }
+
+
   function initQuestions(level) {
     let questions = [];
     let generator = new QuestionGenerator();
@@ -44,16 +47,20 @@ function Arithmetic() {
   const [level, setLevel] = useState(initLevel);
   const [questions, setQuestions] = useState(initQuestions(level));
   const [correctCount, setCorrectCount] = useState(0);
+  const [showCongrats, setShowCongrats] = useState(false);
 
   let onAnswerCorrect = function(correctCount) {
     setCorrectCount(correctCount);
     console.log(`Arithmetic::onAnswerCorrect ${correctCount}, question length ${questions.length}`);
     if (questions.length == correctCount) {
-      const nextLevel = level + 1;
-      localStorage.setItem('level', nextLevel);
-      // TODO: congrats animation
+      setShowCongrats(true);
     }
   };
+
+  let onNextLevel = function() {
+    localStorage.setItem(storageKey, level+1);
+    window.location.reload();
+  }
 
   // const questions = new QuestionGenerator().generate(20, ['+', '-'], 5, 30);
   return (<div className = "App">
@@ -65,6 +72,12 @@ function Arithmetic() {
     <div className="questions">
       <form ><QuestionList questions = { questions } onAnswerCorrect={ onAnswerCorrect } /></form >
     </div>
+    { showCongrats && 
+        <div className="center">
+          <button className="btn next-level" onClick={onNextLevel}>Next level</button>
+          <img src="congrats-43.gif" height="300px"/>
+        </div>
+    }
   </div>);
 }
 

@@ -29,7 +29,7 @@ export default class QuestionList extends React.Component {
 
   render() {
     const questionList = this.props.questions.map((question, index) => {
-      return <Question {...question} index={index} onAnswerCorrect={this.onAnswerCorrect.bind(this)} />;
+      return <Question {...question} key={index} index={index} onAnswerCorrect={this.onAnswerCorrect.bind(this)} />;
     });
 
     return <div> {questionList} </div>;
