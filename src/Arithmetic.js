@@ -21,41 +21,39 @@ function Arithmetic() {
   if (!initLevel) {
     initLevel = 1;
   }
-
-  // Declare a new state variable
-  const [level, setLevel] = useState(initLevel);
-  // const correctCount = useMemo(() => factorialOf(number), [number]);
-
-  let onAnswerCorrect = function(questions, correctCount) {
-    setCorrectCount(correctCount);
-    console.log(`Arithmetic::onAnswerCorrect ${correctCount}`);
-    if (questions.length == correctCount) {
-      // console.log(`All correct! initLevel=${initLevel}`);
-      const nextLevel = parseInt(initLevel) + 1;
-      localStorage.setItem('level', nextLevel);
-      setLevel(nextLevel);
-      // TODO: congrats animation
-    }
-  };
-
   const query = useQuery();
 
   let ops = JSON.parse(query.get('ops'));
   if (!ops) {
     ops = ['+', '-'];
   }
-
-  let initQuestions = [];
-  let generator = new QuestionGenerator();
-  const questionsCount = 20;
-  const min = parseInt(query.get('min')? query.get('min') : '1') ;
-  const max = parseInt(query.get('max')? query.get('max') : '20') ;
-  for (let i = 0; i < questionsCount; i++) {
-    initQuestions = initQuestions.concat(generator.generate(1, ops, min, max));
-    // questions = questions.concat(generator.generate(1, ['*', '/'], 2, 9));
+  function initQuestions(level) {
+    let questions = [];
+    let generator = new QuestionGenerator();
+    const questionsCount = 2 + (level-1)*2;
+    const min = parseInt(query.get('min')? query.get('min') : '1') ;
+    const max = parseInt(query.get('max')? query.get('max') : '20') ;
+    for (let i = 0; i < questionsCount; i++) {
+      questions = questions.concat(generator.generate(1, ops, min, max));
+      // questions = questions.concat(generator.generate(1, ['*', '/'], 2, 9));
+    }
+    return questions;
   }
-  const [questions] = useState(initQuestions);
+
+  // Declare a new state variable
+  const [level, setLevel] = useState(initLevel);
+  const [questions, setQuestions] = useState(initQuestions(level));
   const [correctCount, setCorrectCount] = useState(0);
+
+  let onAnswerCorrect = function(correctCount) {
+    setCorrectCount(correctCount);
+    console.log(`Arithmetic::onAnswerCorrect ${correctCount}, question length ${questions.length}`);
+    if (questions.length == correctCount) {
+      const nextLevel = level + 1;
+      localStorage.setItem('level', nextLevel);
+      // TODO: congrats animation
+    }
+  };
 
   // const questions = new QuestionGenerator().generate(20, ['+', '-'], 5, 30);
   return (<div className = "App">
@@ -65,7 +63,7 @@ function Arithmetic() {
       <div>{correctCount} / {questions.length}</div>
     </div>
     <div className="questions">
-      <form ><QuestionList questions = { questions } onAnswerCorrect={ onAnswerCorrect.bind(this) } /></form >
+      <form ><QuestionList questions = { questions } onAnswerCorrect={ onAnswerCorrect } /></form >
     </div>
   </div>);
 }

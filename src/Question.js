@@ -28,7 +28,7 @@ export default class Question extends React.Component {
             this.setState({
               sign: this.state.sign + this.correctSign
             });
-            this.props.onAnswerCorrect(this);
+            this.props.onAnswerCorrect(this.props.index);
           } else {
             this.setState({
               sign: this.state.sign + this.wrongSign
@@ -45,11 +45,36 @@ export default class Question extends React.Component {
       }
     };
 
-    this.handleKeyPress = (event) => {
-      if (event.key === 'Enter') {
-        // console.log('Enter');
-        event.preventDefault();
+    this.onBlur = () => {
+        if (event.target.value) {
+          if (event.target.value == this.previousAnswer) {
+            if (event.target.value != this.props.result.toString()) {
+              event.preventDefault();
+            }
+            return;
+          }
+          if (event.target.value === this.props.result.toString()) {
+            this.setState({
+              sign: this.state.sign + this.correctSign
+            });
+            this.props.onAnswerCorrect(this.props.index);
+          } else {
+            this.setState({
+              sign: this.state.sign + this.wrongSign
+            });
+            event.preventDefault();
+          }
+          this.previousAnswer = event.target.value;
+        } else {
+          // empty, clear sign
+          this.setState({
+            sign: ''
+          });
+        }
+    }
 
+    this.onEnter = (event) => {
+      if (event.key === 'Enter') {
         if (event.target.value) {
           if (event.target.value == this.previousAnswer) {
             if (event.target.value != this.props.result.toString()) {
@@ -64,7 +89,7 @@ export default class Question extends React.Component {
               sign: this.state.sign + this.correctSign
             });
             this.focusToNextInput(event);
-            this.props.onAnswerCorrect(this);
+            this.props.onAnswerCorrect(this.props.index);
           } else {
             this.setState({
               sign: this.state.sign + this.wrongSign
@@ -102,7 +127,7 @@ export default class Question extends React.Component {
         <span>{this.props.op}</span >
         <span className = "rhs" > { this.props.rhs } </span>
         =
-        <input type = "number" pattern="[0-9]*" inputMode="numeric" onKeyDown={ this.handleKeyDown } onKeyPress={ this.handleKeyPress } />
+        <input type = "number" pattern="[0-9]*" inputMode="numeric" onKeyDown={ this.handleKeyDown } onBlur={ this.onBlur } onKeyDownCapture={ this.onEnter } />
         <span > { this.state.sign } </span>
       </p>
     );

@@ -19,18 +19,15 @@ class Home extends React.Component {
                     <h1>Introduction</h1>
 
                     <p>
-                        This is a website dad and monther build for their kids. It include maths exercises from 5 years
+                        This is a website a dad and mother built for their kids. It include math exercises from 5 years
                         to 10 years.
                     </p>
 
                     <p>
-                        All the content are static hosted on
-                        <a href="https://github.com/kidsmath/kidsmath"
+                        All the content here is staticly hosted on <a href="https://github.com/kidsmath/kidsmath"
                         target="_blank" rel="noopener noreferrer">GitHub</a>.
-                        You can use freely use all the content.
-                        If you want to contribute this site feel free to fork send <a
-                        href="https://github.com/kidsmath/kidsmath/pulls" target="_blank" rel="noopener noreferrer">pull request</a>.
-                    </p>
+                        You can freely use all the content displayed.
+                       </p>
 
                     <h1>License</h1>
 

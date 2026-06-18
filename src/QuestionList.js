@@ -6,25 +6,32 @@ export default class QuestionList extends React.Component {
     super(props);
 
     this.state = {
-      correctCount: 0
+      correctCount: new Array(props.questions.length)
     };
 
     this.onAnswerCorrect = this.onAnswerCorrect.bind(this);
   }
 
-  onAnswerCorrect(question) {
-    // console.log(`onAnswerCorrect(${question}) 1 ${this.state.correctCount}`);
-    this.props.onAnswerCorrect(this.props.questions, this.state.correctCount + 1);
+  onAnswerCorrect(questionKey) {
+    let newCorrectCount;
+    if (questionKey === 0) {
+      newCorrectCount = [true, ...this.state.correctCount.slice(questionKey+1)];
+    } else if (questionKey === this.props.questions.length - 1) {
+      newCorrectCount = [...this.state.correctCount.slice(0, questionKey), true];
+    } else {
+      newCorrectCount = [...this.state.correctCount.slice(0, questionKey), true, ...this.state.correctCount.slice(questionKey+1)];
+    }
+    this.props.onAnswerCorrect(newCorrectCount.filter(q => q).length);
     this.setState({
-      correctCount: this.state.correctCount + 1
+      correctCount: newCorrectCount
     });
   }
 
   render() {
     const questionList = this.props.questions.map((question, index) => {
-      return <Question {...question} key={index} onAnswerCorrect={this.onAnswerCorrect.bind(this)} />;
+      return <Question {...question} index={index} onAnswerCorrect={this.onAnswerCorrect.bind(this)} />;
     });
 
-    return <div > {questionList} < /div>;
+    return <div> {questionList} </div>;
   }
 }
