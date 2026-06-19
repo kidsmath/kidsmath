@@ -33,7 +33,7 @@ function Arithmetic() {
   function initQuestions(level) {
     let questions = [];
     let generator = new QuestionGenerator();
-    const questionsCount = 2 + (level-1)*2;
+    const questionsCount = 20 + (level-1)*2;
     const min = parseInt(query.get('min')? query.get('min') : '1') ;
     const max = parseInt(query.get('max')? query.get('max') : '20') ;
     for (let i = 0; i < questionsCount; i++) {

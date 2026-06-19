@@ -29,3 +29,15 @@
   color:orange;
   font-size: xxx-large;
 }
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-level {
+  margin-right: 10px;
+  color: orange;
+  border: 1px solid orange;
+}
